@@ -1,9 +1,9 @@
 {
-  "name": "react-presskit",
+  "name": "pamela-svart-presskit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://svartalv.github.io/ReactPortfolio",
+  "homepage": "https://svartalv.github.io/pamela-svart-presskit",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
