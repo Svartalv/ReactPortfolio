@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://svartalv.github.io/pamela-svart-presskit",
+  "homepage": "https://svartalv.github.io/ReactPortfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
