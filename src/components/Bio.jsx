@@ -24,13 +24,9 @@ const Bio = () => {
     return () => observer.disconnect()
   }, [])
 
-  const paragraph1 = language === 'es' 
-    ? `Pamela es una productora y DJ chilena radicada en Berlín cuyo sonido se mueve en las sombras, fusionando atmósferas oscuras y etéreas con groove pulsante y gravedad emocional. Enraizada en el techno más profundo, su trabajo está moldeado por la intención y la emoción, creando viajes sónicos que invitan a una conexión profunda, tanto interna como colectiva.`
-    : `Pamela is a Chilean-born producer and DJ based in Berlin whose sound moves in shadows, merging dark, ethereal atmospheres with pulsing groove and emotional gravity. Rooted in the deeper end of techno, her work is shaped by intention and emotion, creating sonic journeys that invite deep connection, both inward and collective.`
+  const paragraph1 = `Pamela is a Chilean-born producer and DJ based in Berlin whose sound moves in shadows, merging dark, ethereal atmospheres with pulsing groove and emotional gravity. Rooted in the deeper end of techno, her work is shaped by intention and emotion, creating sonic journeys that invite deep connection, both inward and collective.`
 
-  const paragraph2 = language === 'es'
-    ? `Moldeada por los paisajes emocionales de Chile, la introspección silenciosa de Copenhague y la apertura cruda de Berlín, su sonido es una síntesis de atmósfera e instinto. Estas influencias se fusionan fluidamente, formando un lenguaje sónico que es inmersivo, contenido y emocionalmente enfocado.`
-    : `Shaped by the emotional landscapes of Chile, the quiet introspection of Copenhagen, and the raw openness of Berlin, her sound is a synthesis of atmosphere and instinct. These influences merge fluidly, forming a sonic language that is immersive, restrained, and emotionally focused.`
+  const paragraph2 = `Shaped by the emotional landscapes of Chile, the quiet introspection of Copenhagen, and the raw openness of Berlin, her sound is a synthesis of atmosphere and instinct. These influences merge fluidly, forming a sonic language that is immersive, restrained, and emotionally focused.`
 
   return (
     <section id="bio" className="bio-section">
@@ -39,7 +35,7 @@ const Bio = () => {
           <img src="/assets/bio-image.jpg" alt="Pamela Svart" />
         </div>
         <div className="bio-content">
-          <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'BIOGRAFÍA' : 'BIO'}</h2>
+              <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'BIO' : 'BIO'}</h2>
           <div className="bio-text">
             <div className={`paragraph-text ${isVisible ? 'animate' : ''}`}>
               {paragraph1}

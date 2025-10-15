@@ -52,7 +52,7 @@ const SoundCloudSets = () => {
   return (
     <section id="music" className="soundcloud-section">
       <div className="soundcloud-header">
-        <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'MÚSICA' : 'MUSIC'}</h2>
+        <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'SETS' : 'SETS'}</h2>
       </div>
       
       <div className="soundcloud-list">

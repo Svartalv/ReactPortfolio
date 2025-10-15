@@ -73,7 +73,7 @@ function App() {
           prevImage={prevImage}
           hasMultipleImages={modalImages.length > 1}
         />
-        </div>
+      </div>
     </LanguageProvider>
   )
 }

@@ -1,5 +1,5 @@
-import { useLanguage } from '../contexts/LanguageContext'
 import { useState, useEffect, useRef } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Events = ({ openModal }) => {
   const { language } = useLanguage()
@@ -38,9 +38,9 @@ const Events = ({ openModal }) => {
       title: 'Behave',
       venue: 'Nachtleben Berlin',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Noche de Club' : 'Club Night',
+      type: 'Club Night',
       status: 'current',
-      description: language === 'es' ? 'Nueva edición de la serie underground Behave en Berlín.' : 'New edition of the underground Behave series in Berlin.',
+      description: 'New edition of the underground Behave series in Berlin.',
       artists: ['LOLA KAY', 'GLIA', 'PAMELA SVART'],
       link: 'https://ra.co/events/2269999'
     },
@@ -50,9 +50,9 @@ const Events = ({ openModal }) => {
       title: 'Den Anden Side Anniversary',
       venue: 'Den Anden Side & Pumpehuset',
       city: 'Copenhagen - Denmark',
-      type: language === 'es' ? 'Aniversario de Club' : 'Club Anniversary',
+      type: 'Club Anniversary',
       status: 'current',
-      description: language === 'es' ? 'Celebración del aniversario del icónico club de Copenhague.' : 'Celebration of the iconic Copenhagen club\'s anniversary.',
+      description: 'Celebration of the iconic Copenhagen club\'s anniversary.',
       artists: ['PAMELA SVART', 'DEVELOPER', 'ANGEL D\'LITE', 'ALINA BABYSQUID'],
       link: 'https://www.instagram.com/p/DPOb1u1DLZ9/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
     },
@@ -63,9 +63,9 @@ const Events = ({ openModal }) => {
       title: 'LIFTED & RIFTED',
       venue: 'Marmorbar',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Noche de Club' : 'Club Night',
+      type: 'Club Night',
       status: 'past',
-      description: language === 'es' ? 'Una noche épica de techno underground en el corazón de Berlín.' : 'An epic night of underground techno in the heart of Berlin.',
+      description: 'An epic night of underground techno in the heart of Berlin.',
       artists: ['Furotica', 'Robot Girl', 'NeZoomie', 'Tronh Gabrielle (DE)', 'YETI (3)', 'PAMELA SVART']
     },
     {
@@ -74,9 +74,9 @@ const Events = ({ openModal }) => {
       title: 'MIAW - SUNDAY PRIDE PARTY',
       venue: 'Jolene',
       city: 'Copenhagen - Denmark',
-      type: language === 'es' ? 'Fiesta Pride' : 'Pride Party',
+      type: 'Pride Party',
       status: 'past',
-      description: language === 'es' ? 'Celebración del orgullo con música electrónica en Copenhague.' : 'Pride celebration with electronic music in Copenhagen.',
+      description: 'Pride celebration with electronic music in Copenhagen.',
       artists: ['PAMELA SVART', 'Liad Krispin', 'DJ John K puppy', 'Aaron Blau']
     },
     {
@@ -85,9 +85,9 @@ const Events = ({ openModal }) => {
       title: 'SINGULARITY',
       venue: 'Tresor/Globus',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Club Night' : 'Club Night',
+      type: 'Club Night',
       status: 'past',
-      description: language === 'es' ? 'Noche legendaria en el icónico Tresor de Berlín.' : 'Legendary night at Berlin\'s iconic Tresor club.',
+      description: 'Legendary night at Berlin\'s iconic Tresor club.',
       artists: ['Carmen Electro', 'Ruslan Mays', 'LPV', 'P. Sara Miller', 'PAMELA SVART']
     },
     {
@@ -96,9 +96,9 @@ const Events = ({ openModal }) => {
       title: 'Behave: A New Underground Series',
       venue: 'Nachtleben Berlin',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Serie Underground' : 'Underground Series',
+      type: 'Underground Series',
       status: 'past',
-      description: language === 'es' ? 'Lanzamiento de la nueva serie underground Behave.' : 'Launch of the new underground series Behave.',
+      description: 'Launch of the new underground series Behave.',
       artists: ['PAMELA SVART', 'UNDERGROUND ARTISTS']
     },
     {
@@ -107,9 +107,9 @@ const Events = ({ openModal }) => {
       title: 'Toilet Session - FLINTA TOILET',
       venue: 'Zur Klappe',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Sesión FLINTA' : 'FLINTA Session',
+      type: 'FLINTA Session',
       status: 'past',
-      description: language === 'es' ? 'Sesión especial FLINTA en el espacio underground.' : 'Special FLINTA session in the underground space.',
+      description: 'Special FLINTA session in the underground space.',
       artists: ['PAMELA SVART', 'FLINTA ARTISTS']
     },
     {
@@ -118,9 +118,9 @@ const Events = ({ openModal }) => {
       title: 'HÖR Berlin',
       venue: 'HÖR Berlin',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Streaming Set' : 'Streaming Set',
+      type: 'Streaming Set',
       status: 'past',
-      description: language === 'es' ? 'Set en vivo para HÖR Berlin, el canal de streaming más famoso.' : 'Live set for HÖR Berlin, the most famous streaming channel.',
+      description: 'Live set for HÖR Berlin, the most famous streaming channel.',
       artists: ['PAMELA SVART']
     },
     {
@@ -129,9 +129,9 @@ const Events = ({ openModal }) => {
       title: 'SINGULARITY',
       venue: 'Watergate',
       city: 'Berlin - Germany',
-      type: language === 'es' ? 'Club Night' : 'Club Night',
+      type: 'Club Night',
       status: 'past',
-      description: language === 'es' ? 'Noche memorable en el famoso Watergate de Berlín.' : 'Memorable night at Berlin\'s famous Watergate club.',
+      description: 'Memorable night at Berlin\'s famous Watergate club.',
       artists: ['PAMELA SVART', 'WATERGATE RESIDENTS']
     }
   ]
@@ -174,10 +174,10 @@ const Events = ({ openModal }) => {
   }
   return (
     <section id="events" className="events-section">
-      <h2>{language === 'es' ? 'Timeline de Eventos' : 'Events Timeline'}</h2>
+          <h2>{language === 'es' ? 'EVENTOS' : 'EVENTS'}</h2>
       
       <div className="all-events-section">
-          <h3>{language === 'es' ? 'Todos los Eventos' : 'All Events'}</h3>
+          <h3>All Events</h3>
           <div className="timeline-container" ref={timelineRef}>
             <div className="timeline-progress">
               <div 
@@ -200,7 +200,7 @@ const Events = ({ openModal }) => {
                       {event.title}
                       {event.status === 'current' && (
                         <span className="coming-up-badge">
-                          {language === 'es' ? 'PRÓXIMO' : 'COMING UP'}
+                          COMING UP
                         </span>
                       )}
                     </div>
@@ -216,17 +216,17 @@ const Events = ({ openModal }) => {
                           {artist}
                         </span>
                       ))}
-                    </div>
+        </div>
                     <div className="timeline-type">{event.type}</div>
-                  </div>
-                </div>
+              </div>
+            </div>
               </div>
             ))}
           </div>
         </div>
       
-      <div className="ra-note">
-        <p><em>{language === 'es' ? 'Para las listas de eventos más actualizadas y contrataciones, visita mi' : 'For the most up-to-date event listings and bookings, please visit my'} <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer">{language === 'es' ? 'perfil de Resident Advisor' : 'Resident Advisor profile'}</a>.</em></p>
+          <div className="ra-note">
+            <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer" style={{fontSize:12,letterSpacing:".1em",color:"#fff",textDecoration:"none"}}>RA</a>
       </div>
     </section>
   )

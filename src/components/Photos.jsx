@@ -1,5 +1,5 @@
-import { useLanguage } from '../contexts/LanguageContext'
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Photos = ({ openModal }) => {
   const { language } = useLanguage()
@@ -58,8 +58,8 @@ const Photos = ({ openModal }) => {
   }
 
   return (
-    <section id="photos" className="expanding-gallery-section">
-      <h2>{language === 'es' ? 'Galería' : 'Gallery'}</h2>
+        <section id="photos" className="expanding-gallery-section">
+          <h2>{language === 'es' ? 'FOTOS' : 'PHOTOS'}</h2>
       
       <div className="expanding-gallery-container">
         {galleryImages.map((image, index) => (

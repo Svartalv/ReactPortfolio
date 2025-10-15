@@ -1,52 +1,46 @@
+import { FaSpotify, FaSoundcloud, FaInstagram, FaEnvelope } from 'react-icons/fa'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useState } from 'react'
 
 const Contact = () => {
   const { language } = useLanguage()
-  const [showEmailCard, setShowEmailCard] = useState(false)
 
-  const handleBookMeClick = () => {
-    setShowEmailCard(!showEmailCard)
+  const handleEmailClick = (email) => {
+    window.location.href = `mailto:${email}`
   }
 
   return (
     <section id="contact" className="contact-section">
-      <h2>{language === 'es' ? 'Contacto' : 'Contact'}</h2>
+      <h2>{language === 'es' ? 'CONTACTO' : 'CONTACT'}</h2>
       
       <div className="contact-content">
-        <div className="email-section">
-          <h3>{language === 'es' ? 'Email Personal' : 'Personal Email'}</h3>
-          <p>pamelasvart@gmail.com</p>
-        </div>
-        
-        <div className="behave-section">
-          <h3>{language === 'es' ? 'Behave Collective' : 'Behave Collective'}</h3>
-          <p>{language === 'es' ? 'Para bookings y eventos' : 'For bookings and events'}</p>
-          <p>behave.booking@gmail.com</p>
-        </div>
-        
-        <button className="book-me-button" onClick={handleBookMeClick}>
-          {language === 'es' ? 'Contrátame' : 'Book Me'}
-        </button>
-        
-        {showEmailCard && (
-          <div className="email-card">
-            <div className="email-card-content">
-              <h4>{language === 'es' ? 'Información de Contacto' : 'Contact Information'}</h4>
-              <div className="email-item">
-                <strong>{language === 'es' ? 'Personal:' : 'Personal:'}</strong>
-                <span>pamelasvart@gmail.com</span>
-              </div>
-              <div className="email-item">
-                <strong>{language === 'es' ? 'Behave Collective:' : 'Behave Collective:'}</strong>
-                <span>behave.booking@gmail.com</span>
-              </div>
-              <button className="close-card" onClick={() => setShowEmailCard(false)}>
-                ✕
-              </button>
+        <div className="contact-info-card">
+          <div className="emails-section">
+            <div className="email-item" onClick={() => handleEmailClick('pamelasvart@gmail.com')}>
+              <span>pamelasvart@gmail.com</span>
+            </div>
+            <div className="email-item" onClick={() => handleEmailClick('behave.booking@gmail.com')}>
+              <span>behave.booking@gmail.com</span>
             </div>
           </div>
-        )}
+          
+          <div className="contact-social-icons">
+            <a href="https://open.spotify.com/artist/2DHGsoZWpcTUcY8x6tct8n" target="_blank" rel="noreferrer" title="Spotify">
+              <FaSpotify size={24} />
+            </a>
+            <a href="https://soundcloud.com/pamela-svart" target="_blank" rel="noreferrer" title="SoundCloud">
+              <FaSoundcloud size={24} />
+            </a>
+            <a href="https://www.instagram.com/pamelasvart/" target="_blank" rel="noreferrer" title="Instagram">
+              <FaInstagram size={24} />
+            </a>
+            <a href="mailto:pamelasvart@gmail.com" title="Email">
+              <FaEnvelope size={24} />
+            </a>
+            <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer" title="Resident Advisor">
+              <span style={{fontSize:16,letterSpacing:".18em"}}>RA</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   )
