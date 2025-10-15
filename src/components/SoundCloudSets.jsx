@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const SoundCloudSets = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const { language } = useLanguage()
 
   // Your actual SoundCloud tracks with compact players
   const soundcloudSets = [
@@ -35,7 +37,7 @@ const SoundCloudSets = () => {
       { threshold: 0.1 }
     )
 
-    const element = document.getElementById('soundcloud-sets')
+    const element = document.getElementById('music')
     if (element) {
       observer.observe(element)
     }
@@ -48,9 +50,9 @@ const SoundCloudSets = () => {
   }, [])
 
   return (
-    <section id="soundcloud-sets" className="soundcloud-section">
+    <section id="music" className="soundcloud-section">
       <div className="soundcloud-header">
-        <h2 className={isVisible ? 'animate' : ''}>MUSIC</h2>
+        <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'MÚSICA' : 'MUSIC'}</h2>
       </div>
       
       <div className="soundcloud-list">

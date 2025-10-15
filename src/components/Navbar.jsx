@@ -1,14 +1,38 @@
 import { useState, useCallback } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { language, toggleLanguage } = useLanguage()
 
   const scrollToSection = useCallback((id) => {
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
     setIsMobileMenuOpen(false) // Close mobile menu when navigating
   }, [])
+
+  const navItems = language === 'es' 
+    ? [
+        { id: 'home', label: 'Inicio' },
+        { id: 'bio', label: 'Bio' },
+        { id: 'videos', label: 'Vídeos' },
+        { id: 'music', label: 'Música' },
+        { id: 'photos', label: 'Fotos' },
+        { id: 'events', label: 'Eventos' },
+        { id: 'tech', label: 'Tech Rider' },
+        { id: 'contact', label: 'Contacto' }
+      ]
+    : [
+        { id: 'home', label: 'Home' },
+        { id: 'bio', label: 'Bio' },
+        { id: 'videos', label: 'Videos' },
+        { id: 'music', label: 'Music' },
+        { id: 'photos', label: 'Photos' },
+        { id: 'events', label: 'Events' },
+        { id: 'tech', label: 'Tech Rider' },
+        { id: 'contact', label: 'Contact' }
+      ]
 
   return (
     <nav className="navbar">
@@ -17,13 +41,30 @@ const Navbar = () => {
           {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
         <ul className={`nav-menu ${isMobileMenuOpen ? 'nav-menu-open' : ''}`}>
-          <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home') }}>Home</a></li>
-          <li><a href="#bio" onClick={(e) => { e.preventDefault(); scrollToSection('bio') }}>Bio</a></li>
-          <li><a href="#videos" onClick={(e) => { e.preventDefault(); scrollToSection('videos') }}>Videos</a></li>
-          <li><a href="#photos" onClick={(e) => { e.preventDefault(); scrollToSection('photos') }}>Photos</a></li>
-          <li><a href="#events" onClick={(e) => { e.preventDefault(); scrollToSection('events') }}>Events</a></li>
-          <li><a href="#tech" onClick={(e) => { e.preventDefault(); scrollToSection('tech') }}>Tech Rider</a></li>
-          <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact') }}>Contact</a></li>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a href={`#${item.id}`} onClick={(e) => { e.preventDefault(); scrollToSection(item.id) }}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li className="language-toggle">
+            <div className="lang-switcher">
+              <button 
+                onClick={() => language !== 'es' && toggleLanguage()} 
+                className={`lang-btn ${language === 'es' ? 'active' : ''}`}
+              >
+                ESP
+              </button>
+              <span className="lang-separator">|</span>
+              <button 
+                onClick={() => language !== 'en' && toggleLanguage()} 
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+              >
+                ENG
+              </button>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

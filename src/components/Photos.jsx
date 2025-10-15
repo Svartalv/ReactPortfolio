@@ -1,4 +1,10 @@
+import { useLanguage } from '../contexts/LanguageContext'
+import { useState } from 'react'
+
 const Photos = ({ openModal }) => {
+  const { language } = useLanguage()
+  const [activeIndex, setActiveIndex] = useState(null)
+  
   const galleryImages = [
     {
       src: '/assets/gallery/gallery 1.jpg',
@@ -38,18 +44,33 @@ const Photos = ({ openModal }) => {
     }
   ]
 
+  const handleMouseEnter = (index) => {
+    setActiveIndex(index)
+  }
+
+  const handleMouseLeave = () => {
+    setActiveIndex(null)
+  }
+
+  const handleClick = (index) => {
+    // Always open modal when clicked
+    openModal(galleryImages[index].src, galleryImages, index)
+  }
+
   return (
-    <section id="photos" className="cinematic-gallery-section">
-      <div className="gallery-header">
-        <h2>GALLERY</h2>
-      </div>
+    <section id="photos" className="expanding-gallery-section">
+      <h2>{language === 'es' ? 'Galería' : 'Gallery'}</h2>
       
-      <div className="cinematic-grid">
-        {galleryImages.map((image, i) => (
-          <div key={i} className="cinematic-photo" onClick={() => openModal(image.src, galleryImages, i)}>
-            <div className="photo-container">
-              <img src={image.src} alt={image.alt} />
-            </div>
+      <div className="expanding-gallery-container">
+        {galleryImages.map((image, index) => (
+          <div 
+            key={index} 
+            className={`expanding-gallery-item ${activeIndex === index ? 'active' : ''} ${activeIndex !== null && activeIndex !== index ? 'inactive' : ''}`}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick(index)}
+          >
+            <img src={image.src} alt={image.alt} />
           </div>
         ))}
       </div>

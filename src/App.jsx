@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LanguageProvider } from './contexts/LanguageContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Bio from './components/Bio'
@@ -47,31 +48,33 @@ function App() {
   }
 
   return (
-    <div id="app">
-      <Navbar />
-      <Hero />
-      <div className="section-spacer"></div>
-      <Bio />
-      <div className="section-spacer"></div>
-      <Videos openModal={openModal} />
-      <div className="section-spacer"></div>
-      <SoundCloudSets />
-      <div className="section-spacer"></div>
-      <Photos openModal={openModal} />
-      <div className="section-spacer"></div>
-      <Events />
-      <div className="section-spacer"></div>
-      <TechRider />
-      <div className="section-spacer"></div>
-      <Contact />
-      <Modal 
-        modalImage={modalImage} 
-        closeModal={closeModal} 
-        nextImage={nextImage}
-        prevImage={prevImage}
-        hasMultipleImages={modalImages.length > 1}
-      />
-      </div>
+    <LanguageProvider>
+      <div id="app">
+        <Navbar />
+        <Hero />
+        <div className="section-spacer"></div>
+        <Bio />
+        <div className="section-spacer"></div>
+        <Videos openModal={openModal} />
+        <div className="section-spacer"></div>
+        <SoundCloudSets />
+        <div className="section-spacer"></div>
+        <Photos openModal={openModal} />
+        <div className="section-spacer"></div>
+        <Events openModal={openModal} />
+        <div className="section-spacer"></div>
+        <TechRider />
+        <div className="section-spacer"></div>
+        <Contact />
+        <Modal 
+          modalImage={modalImage} 
+          closeModal={closeModal} 
+          nextImage={nextImage}
+          prevImage={prevImage}
+          hasMultipleImages={modalImages.length > 1}
+        />
+        </div>
+    </LanguageProvider>
   )
 }
 
