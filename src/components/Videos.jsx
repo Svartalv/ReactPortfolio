@@ -105,7 +105,8 @@ const Videos = ({ openModal }) => {
   return (
     <section id="videos" className="videos-section" ref={videosSectionRef}>
       <div className="videos-header">
-        <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'MÚSICA' : 'MUSIC'}</h2>
+        <div className="videos-title-parallax-bg"></div>
+            <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'VIDEOS' : 'VIDEOS'}</h2>
       </div>
       
       <div className="videos-container">

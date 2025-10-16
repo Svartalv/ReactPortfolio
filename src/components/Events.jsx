@@ -174,10 +174,12 @@ const Events = ({ openModal }) => {
   }
   return (
     <section id="events" className="events-section">
-          <h2>{language === 'es' ? 'EVENTOS' : 'EVENTS'}</h2>
-      
-      <div className="all-events-section">
-          <h3>All Events</h3>
+      <div className="events-parallax-bg"></div>
+      <div className="events-content">
+        <h2>{language === 'es' ? 'EVENTOS' : 'EVENTS'}</h2>
+        
+            <div className="all-events-section">
+                <h3>{language === 'es' ? 'Todos los Eventos' : 'All Events'}</h3>
           <div className="timeline-container" ref={timelineRef}>
             <div className="timeline-progress">
               <div 
@@ -198,11 +200,11 @@ const Events = ({ openModal }) => {
                   <div className="timeline-event-content">
                     <div className="timeline-title">
                       {event.title}
-                      {event.status === 'current' && (
-                        <span className="coming-up-badge">
-                          COMING UP
-                        </span>
-                      )}
+                            {event.status === 'current' && (
+                              <span className="coming-up-badge">
+                                {language === 'es' ? 'PRÓXIMAMENTE' : 'COMING UP'}
+                              </span>
+                            )}
                     </div>
                     <div className="timeline-location">
                       <span className="country-flag">{getCountryFlag(event.city)}</span>
@@ -225,8 +227,9 @@ const Events = ({ openModal }) => {
           </div>
         </div>
       
-          <div className="ra-note">
-            <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer" style={{fontSize:12,letterSpacing:".1em",color:"#fff",textDecoration:"none"}}>RA</a>
+        <div className="ra-note">
+          <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer" style={{fontSize:12,letterSpacing:".1em",color:"#fff",textDecoration:"none"}}>RA</a>
+        </div>
       </div>
     </section>
   )

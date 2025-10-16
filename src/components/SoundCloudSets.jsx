@@ -51,11 +51,13 @@ const SoundCloudSets = () => {
 
   return (
     <section id="music" className="soundcloud-section">
-      <div className="soundcloud-header">
-        <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'SETS' : 'SETS'}</h2>
-      </div>
-      
-      <div className="soundcloud-list">
+      <div className="soundcloud-parallax-bg"></div>
+      <div className="soundcloud-content">
+        <div className="soundcloud-header">
+          <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'SETS' : 'SETS'}</h2>
+        </div>
+        
+        <div className="soundcloud-list">
         {soundcloudSets.map((set) => (
           <div key={set.id} className={`soundcloud-item ${isVisible ? 'animate' : ''}`}>
             <div className="soundcloud-player-small">
@@ -73,6 +75,7 @@ const SoundCloudSets = () => {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   )

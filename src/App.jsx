@@ -53,15 +53,15 @@ function App() {
         <Navbar />
         <Hero />
         <div className="section-spacer"></div>
-        <Bio />
-        <div className="section-spacer"></div>
-        <Videos openModal={openModal} />
-        <div className="section-spacer"></div>
-        <SoundCloudSets />
-        <div className="section-spacer"></div>
-        <Photos openModal={openModal} />
-        <div className="section-spacer"></div>
-        <Events openModal={openModal} />
+            <Bio />
+            <div className="section-spacer"></div>
+            <Videos openModal={openModal} />
+            <div className="section-spacer"></div>
+            <SoundCloudSets />
+            <div className="section-spacer"></div>
+            <Events openModal={openModal} />
+            <div className="section-spacer"></div>
+            <Photos openModal={openModal} />
         <div className="section-spacer"></div>
         <TechRider />
         <div className="section-spacer"></div>

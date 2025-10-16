@@ -7,7 +7,7 @@ const Photos = ({ openModal }) => {
   
   const galleryImages = [
     {
-      src: '/assets/gallery/gallery 1.jpg',
+      src: '/assets/gallery/gallery 1.JPEG',
       alt: 'Pamela Svart - Gallery 1'
     },
     {
