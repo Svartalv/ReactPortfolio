@@ -54,7 +54,7 @@ const SoundCloudSets = () => {
       <div className="soundcloud-parallax-bg"></div>
       <div className="soundcloud-content">
         <div className="soundcloud-header">
-          <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'SETS' : 'SETS'}</h2>
+          <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'Music' : 'Music'}</h2>
         </div>
         
         <div className="soundcloud-list">

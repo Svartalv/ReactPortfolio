@@ -106,7 +106,7 @@ const Videos = ({ openModal }) => {
     <section id="videos" className="videos-section" ref={videosSectionRef}>
       <div className="videos-header">
         <div className="videos-title-parallax-bg"></div>
-            <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'VIDEOS' : 'VIDEOS'}</h2>
+            <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'Videos' : 'Videos'}</h2>
       </div>
       
       <div className="videos-container">
@@ -131,6 +131,8 @@ const Videos = ({ openModal }) => {
                   src={video.thumbnail} 
                   alt={video.title}
                   className="video-thumbnail-image"
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable={false}
                   onError={(e) => {
                     e.target.style.display = 'none'
                   }}

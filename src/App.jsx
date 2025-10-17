@@ -5,11 +5,11 @@ import Hero from './components/Hero'
 import Bio from './components/Bio'
 import SoundCloudSets from './components/SoundCloudSets'
 import Videos from './components/Videos'
-import Parallax from './components/Parallax'
 import Photos from './components/Photos'
 import Events from './components/Events'
 import TechRider from './components/TechRider'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 import Modal from './components/Modal'
 
 function App() {

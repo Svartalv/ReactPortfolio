@@ -41,7 +41,7 @@ const Events = ({ openModal }) => {
       type: 'Club Night',
       status: 'current',
       description: 'New edition of the underground Behave series in Berlin.',
-      artists: ['LOLA KAY', 'GLIA', 'PAMELA SVART'],
+      artists: ['PAMELA SVART'],
       link: 'https://ra.co/events/2269999'
     },
     {
@@ -53,14 +53,14 @@ const Events = ({ openModal }) => {
       type: 'Club Anniversary',
       status: 'current',
       description: 'Celebration of the iconic Copenhagen club\'s anniversary.',
-      artists: ['PAMELA SVART', 'DEVELOPER', 'ANGEL D\'LITE', 'ALINA BABYSQUID'],
+      artists: ['PAMELA SVART'],
       link: 'https://www.instagram.com/p/DPOb1u1DLZ9/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
     },
     // PAST EVENTS
     {
       id: 'lifted-rifted',
       date: 'Aug 23, 2025',
-      title: 'LIFTED & RIFTED',
+      title: 'Lifted & Rifted',
       venue: 'Marmorbar',
       city: 'Berlin - Germany',
       type: 'Club Night',
@@ -71,7 +71,7 @@ const Events = ({ openModal }) => {
     {
       id: 'miaw-pride',
       date: 'Aug 17, 2025',
-      title: 'MIAW - SUNDAY PRIDE PARTY',
+      title: 'Miaw - Sunday Pride Party',
       venue: 'Jolene',
       city: 'Copenhagen - Denmark',
       type: 'Pride Party',
@@ -82,7 +82,7 @@ const Events = ({ openModal }) => {
     {
       id: 'singularity-tresor',
       date: 'Aug 11, 2025',
-      title: 'SINGULARITY',
+      title: 'Singularity',
       venue: 'Tresor/Globus',
       city: 'Berlin - Germany',
       type: 'Club Night',
@@ -126,7 +126,7 @@ const Events = ({ openModal }) => {
     {
       id: 'singularity-watergate',
       date: 'Sep 30, 2024',
-      title: 'SINGULARITY',
+      title: 'Singularity',
       venue: 'Watergate',
       city: 'Berlin - Germany',
       type: 'Club Night',
@@ -176,10 +176,10 @@ const Events = ({ openModal }) => {
     <section id="events" className="events-section">
       <div className="events-parallax-bg"></div>
       <div className="events-content">
-        <h2>{language === 'es' ? 'EVENTOS' : 'EVENTS'}</h2>
+        <h2>{language === 'es' ? 'Eventos' : 'Events'}</h2>
         
-            <div className="all-events-section">
-                <h3>{language === 'es' ? 'Todos los Eventos' : 'All Events'}</h3>
+        <div className="all-events-section">
+          <h3>{language === 'es' ? 'Todos los Eventos' : 'All Events'}</h3>
           <div className="timeline-container" ref={timelineRef}>
             <div className="timeline-progress">
               <div 
@@ -200,11 +200,11 @@ const Events = ({ openModal }) => {
                   <div className="timeline-event-content">
                     <div className="timeline-title">
                       {event.title}
-                            {event.status === 'current' && (
-                              <span className="coming-up-badge">
-                                {language === 'es' ? 'PRÓXIMAMENTE' : 'COMING UP'}
-                              </span>
-                            )}
+                      {event.status === 'current' && (
+                        <span className="coming-up-badge">
+                          {language === 'es' ? 'Próximamente' : 'Coming up'}
+                        </span>
+                      )}
                     </div>
                     <div className="timeline-location">
                       <span className="country-flag">{getCountryFlag(event.city)}</span>
@@ -212,23 +212,11 @@ const Events = ({ openModal }) => {
                       <span className="location-icon">📍</span>
                       <span className="venue-name">{event.venue}</span>
                     </div>
-                    <div className="timeline-artists">
-                      {event.artists.map((artist, artistIndex) => (
-                        <span key={artistIndex} className={`timeline-artist ${artist === 'PAMELA SVART' ? 'highlighted' : ''}`}>
-                          {artist}
-                        </span>
-                      ))}
-        </div>
-                    <div className="timeline-type">{event.type}</div>
-              </div>
-            </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      
-        <div className="ra-note">
-          <a href="https://ra.co/dj/pamelasvart" target="_blank" rel="noreferrer" style={{fontSize:12,letterSpacing:".1em",color:"#fff",textDecoration:"none"}}>RA</a>
         </div>
       </div>
     </section>

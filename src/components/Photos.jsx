@@ -59,7 +59,7 @@ const Photos = ({ openModal }) => {
 
   return (
         <section id="photos" className="expanding-gallery-section">
-          <h2>{language === 'es' ? 'FOTOS' : 'PHOTOS'}</h2>
+          <h2>{language === 'es' ? 'Fotos' : 'Photos'}</h2>
       
       <div className="expanding-gallery-container">
         {galleryImages.map((image, index) => (

@@ -1,29 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
-
-/* Ensure UnifrakturMaguntia loads properly */
-@font-face {
-  font-family: 'UnifrakturMaguntia';
-  src: url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root { --bg:#000; --fg:#fff; }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body,#root{height:100%}
 
 /* GLOBAL FONT CONSISTENCY */
 h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+/* MAIN TITLES FONT */
+h1, h2 {
+  font-family: "UnifrakturMaguntia", serif !important;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
 }
 body{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   background:var(--bg);
   color:var(--fg);
   line-height:1.6;
@@ -138,44 +129,41 @@ body{
 }
 
 /* HERO */
-.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:flex-end;padding-right:20px}
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-start;justify-content:flex-end;padding:40px 40px 0 0}
 .hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat}
-.floating-social-icons{position:fixed;top:50%;right:30px;transform:translateY(-50%);display:flex;flex-direction:column;gap:25px;z-index:100;opacity:0;animation:fadeInRight 1.5s ease-out 2s forwards}
-.floating-social-icons a{color:rgba(255,255,255,.8);padding:12px;width:45px;height:45px;display:grid;place-items:center;text-decoration:none;border-radius:50%;transition:transform .2s, color .2s;font-size:18px;background:none;border:none}
-.floating-social-icons a:hover{color:#fff;transform:scale(1.1)}
+.hero-name{position:relative;z-index:2;text-align:right;padding:0}
+.hero-name h1{color:#fff;font-size:clamp(4rem,10vw,10rem);font-weight:400;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.8)}
 
 /* PARALLAX SECTION */
 .parallax-section{height:60vh;position:relative;overflow:hidden}
 .parallax-bg{position:absolute;top:-20%;left:0;width:100%;height:140%;background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;filter:brightness(0.8)}
 
-/* GENERIC SECTIONS */
-section{padding:90px 20px; text-align: center;}
-h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom:36px;font-weight:700}
+/* Image Protection - Disable right-click save on all images except Photos section */
+img:not(.expanding-gallery-container img) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* Allow Photos section images to be downloadable */
+.expanding-gallery-container img {
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
 
 /* BIO SECTION */
 .bio-section {
   position: relative;
   background: #000;
-  padding: 40px 20px;
-  min-height: 80vh;
+  padding: 20px;
+  min-height: 60vh;
   overflow: hidden;
 }
 
-.bio-parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/assets/backgrounds/12.jpg');
-  background-size: 180% 500%;
-  filter: blur(2px);
-  background-position: center top;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  opacity: 0.4;
-  z-index: 1;
-}
 
 .bio-content {
   position: relative;
@@ -186,9 +174,9 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 
 .bio-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   position: relative;
-  height: 200px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,16 +186,15 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 .bio-header h2 {
   position: relative;
   z-index: 2;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: 700;
   letter-spacing: 0.4em;
   color: #fff;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.8s ease-out;
   margin: 0;
+  text-align: center;
 }
 
 .bio-header h2.animate {
@@ -215,26 +202,79 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   transform: translateY(0);
 }
 
+.soundcloud-header h2.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.videos-header h2.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .bio-container { 
   display: flex; 
-  min-height: 400px;
-  gap: 0;
+  min-height: auto;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  flex-direction: row;
 }
-.bio-image { flex: 0 0 45%; position: relative; overflow: hidden; }
-.bio-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bio-image { 
+  flex: 0 0 50%; 
+  height: auto;
+  min-height: 300px;
+  position: relative; 
+  overflow: hidden;
+}
+
+.bio-image img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain;
+  display: block;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+}
+
+.contact-signature {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.contact-signature-sword-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  filter: invert(1);
+}
+
+.contact-signature span {
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
 .bio-text-content { 
-  flex: 0 0 100%; 
+  flex: 0 0 50%; 
   background: transparent; 
-  padding: 60px 80px; 
+  padding: 30px 40px; 
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
   align-items: center;
   text-align: center;
   position: relative; 
-  max-width: 800px;
+  max-width: none;
 }
 
 .bio-text-content h2 { 
@@ -245,11 +285,23 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   letter-spacing: 0.2em; 
   color: #fff; 
   text-transform: uppercase; 
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+.bio-inline-title {
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-size: 3rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  text-transform: none !important;
+  color: #fff;
+  margin: 0 0 20px 0;
+  text-align: left;
 }
 
 .bio-text { 
-  margin-bottom: 30px; 
+  margin-bottom: 50px; 
 }
 
 .paragraph-text { 
@@ -276,25 +328,6 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 
 .bio-social-icons a:hover { 
   opacity: 0.7; 
-}
-.bio-content h2 { 
-  text-align: left; 
-  margin-bottom: 100px; 
-  font-size: 4rem; 
-  font-weight: normal; 
-  letter-spacing: .02em; 
-  line-height: 1.0;
-  opacity: 0; 
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: #fff;
-  text-transform: capitalize;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.bio-content h2.animate {
-  opacity: 1;
-  transform: translateY(0);
 }
 .bio-text { margin-bottom: 60px; }
 .paragraph-text { 
@@ -428,6 +461,43 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   background: #000;
 }
 
+/* FOOTER STYLES */
+.site-footer {
+  background: #000;
+  padding: 15px;
+  text-align: left;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  max-width: 100%;
+  margin: 0;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-sword-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+  filter: invert(1);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.footer-text p {
+  color: #fff;
+  font-size: 0.8rem;
+  margin: 0;
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
 /* STANDARDIZED HEADER SPACING */
 .bio-header, .soundcloud-header, .videos-header {
   text-align: center;
@@ -440,25 +510,6 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   overflow: hidden;
 }
 
-.bio-header h2, .soundcloud-header h2, .videos-header h2 {
-  position: relative;
-  z-index: 2;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 0.4em;
-  color: #fff;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-  margin: 0;
-}
-
-.bio-header h2.animate, .soundcloud-header h2.animate, .videos-header h2.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* SOUNDCLOUD SETS SECTION */
 .soundcloud-section {
@@ -497,16 +548,15 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .soundcloud-header h2 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 3.8rem;
+  font-size: 6rem;
   font-weight: normal;
   color: #fff;
   letter-spacing: 0.02em;
-  text-transform: capitalize;
   margin: 0;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.8s ease-out;
+  text-align: center;
 }
 
 .soundcloud-header h2.animate {
@@ -608,16 +658,15 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .videos-header h2 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: 700;
   letter-spacing: 0.4em;
   color: #fff;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.8s ease-out;
   margin: 0;
+  text-align: center;
 }
 
 .videos-header h2.animate {
@@ -698,7 +747,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .video-title h3 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
@@ -786,13 +835,14 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .expanding-gallery-section h2 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: normal;
   letter-spacing: 0.02em;
   color: #fff;
-  text-transform: capitalize;
   margin: 0 0 60px 0;
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
 }
 
 .expanding-gallery-container {
@@ -900,13 +950,14 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .events-section h2 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: normal;
   letter-spacing: 0.02em;
   color: #fff;
-  text-transform: capitalize;
   margin: 0 0 60px 0;
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
 }
 
 
@@ -1011,7 +1062,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   font-weight: 500;
   color: #fff;
   font-size: 0.85rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   flex-shrink: 0;
 }
 
@@ -1020,14 +1071,14 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   color: #fff;
   margin: 0 0 8px 0;
   font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
 }
 
 .event-details p {
   color: #ccc;
   margin: 0 0 8px 0;
   font-size: 0.9rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
 }
 
 .event-type {
@@ -1038,7 +1089,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   width: fit-content;
 }
 
@@ -1190,7 +1241,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   min-height: 80px;
   display: flex;
   align-items: center;
@@ -1596,7 +1647,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 /* TECH RIDER SECTION */
 .tech-section {
   position: relative;
-  background: #000;
+  background: transparent;
   padding: 40px 20px;
   text-align: center;
   min-height: 50vh;
@@ -1609,12 +1660,12 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/backgrounds/11.jpg');
+  background-image: url('/assets/runes.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  opacity: 0.3;
+  opacity: 0.4;
   z-index: 1;
 }
 
@@ -1670,13 +1721,14 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 }
 
 .contact-section h2 {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: normal;
   letter-spacing: 0.02em;
   color: #fff;
-  text-transform: capitalize;
   margin: 0 0 60px 0;
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
 }
 
 .contact-content {
@@ -1828,7 +1880,7 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
 .email-item span {
   color: #fff;
   font-size: 1rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
 }
 
 .close-card {
@@ -2117,5 +2169,62 @@ h2{text-transform:uppercase;letter-spacing:.18em;text-align:center;margin-bottom
   .modal-next {
     right: -50px;
   }
+}
+
+/* HIGH SPECIFICITY FONT OVERRIDE FOR MAIN TITLES */
+html body h1,
+html body h2,
+.hero h1,
+.section h1,
+.section h2 {
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  color: #f2f2f2;
+}
+
+/* SCOPED FONT RULES - TITLES ONLY */
+.display, h1, h2 {
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  text-transform: none !important; /* Override any uppercase transforms */
+  font-size: 6rem !important; /* Much bigger titles */
+}
+body, p, li, a, small, h3, h4, h5, h6 {
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+.inline-title {
+  display: inline;
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-weight: 400 !important;
+  font-size: 2rem !important;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-transform: none !important;
+  color: #fff;
+  margin-right: 1rem;
+}
+
+/* TECH RIDER ANIMATION */
+.tech-title {
+  font-family: "UnifrakturMaguntia", serif !important;
+  font-size: 6rem;
+  font-weight: 400;
+  color: #fff;
+  text-transform: none !important;
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  filter: blur(10px);
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tech-title.animate {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
 }
 

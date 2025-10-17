@@ -1,5 +1,3 @@
-import { FaSpotify, FaSoundcloud, FaInstagram } from 'react-icons/fa'
-
 const Hero = () => {
   return (
     <section id="home" className="hero">

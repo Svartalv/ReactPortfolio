@@ -1,10 +1,11 @@
 import { FaSpotify, FaSoundcloud, FaInstagram, FaYoutube } from 'react-icons/fa'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Bio = () => {
   const [isVisible, setIsVisible] = useState(false)
   const { language } = useLanguage()
+  const bioImageRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,6 +25,31 @@ const Bio = () => {
     return () => observer.disconnect()
   }, [])
 
+  // Tilt effect for bio image while scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (bioImageRef.current) {
+        const rect = bioImageRef.current.getBoundingClientRect()
+        const windowHeight = window.innerHeight
+        const elementTop = rect.top
+        const elementHeight = rect.height
+        
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.max(0, Math.min(1, 
+          (windowHeight - elementTop) / (windowHeight + elementHeight)
+        ))
+        
+        // Apply tilt effect (subtle 3D rotation)
+        const rotateX = (scrollProgress - 0.5) * 4 // -2 to +2 degrees
+        const rotateY = (scrollProgress - 0.5) * 2 // -1 to +1 degrees
+        bioImageRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const paragraph1 = language === 'es' 
     ? `Pamela es una productora y DJ chilena radicada en Berlín cuyo sonido se mueve en las sombras, fusionando atmósferas oscuras y etéreas con groove pulsante y gravedad emocional. Enraizada en el lado más profundo del techno, su trabajo está moldeado por la intención y la emoción, creando viajes sónicos que invitan a una conexión profunda, tanto interna como colectiva.`
     : `Pamela is a Chilean-born producer and DJ based in Berlin whose sound moves in shadows, merging dark, ethereal atmospheres with pulsing groove and emotional gravity. Rooted in the deeper end of techno, her work is shaped by intention and emotion, creating sonic journeys that invite deep connection, both inward and collective.`
@@ -34,16 +60,19 @@ const Bio = () => {
 
   return (
     <section id="bio" className="bio-section">
-      <div className="bio-parallax-bg"></div>
       <div className="bio-content">
-        <div className="bio-header">
-          <h2 className={isVisible ? 'animate' : ''}>{language === 'es' ? 'BIO' : 'BIO'}</h2>
-        </div>
         <div className="bio-container">
           <div className="bio-image">
-            <img src="/assets/bio-image.jpg" alt="Pamela Svart" />
+            <img 
+              ref={bioImageRef} 
+              src="/assets/bio-image.jpg" 
+              alt="Pamela Svart" 
+              onContextMenu={(e) => e.preventDefault()}
+              draggable={false}
+            />
           </div>
           <div className="bio-text-content">
+            <h2 className="bio-inline-title">{language === 'es' ? 'Bio' : 'Bio'}</h2>
             <div className="bio-text">
               <div className={`paragraph-text ${isVisible ? 'animate' : ''}`}>
                 {paragraph1}
